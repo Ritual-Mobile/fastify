@@ -36,6 +36,7 @@ const defaultInitOptions = {
   requestIdHeader: false,
   http2SessionTimeout: 72000, // 72 seconds
   exposeHeadRoutes: true,
+  checkRouteParams: false,
   allowErrorHandlerOverride: false,
   routerOptions: {
     allowUnsafeRegex: false,
@@ -96,6 +97,7 @@ const schema = {
     requestIdHeader: { anyOf: [{ type: 'boolean' }, { type: 'string' }], default: defaultInitOptions.requestIdHeader },
     http2SessionTimeout: { type: 'integer', default: defaultInitOptions.http2SessionTimeout },
     exposeHeadRoutes: { type: 'boolean', default: defaultInitOptions.exposeHeadRoutes },
+    checkRouteParams: { type: 'boolean', default: defaultInitOptions.checkRouteParams },
     routerOptions: {
       type: 'object',
       additionalProperties: false,

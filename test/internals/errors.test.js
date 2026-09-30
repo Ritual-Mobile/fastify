@@ -5,7 +5,7 @@ const errors = require('../../lib/errors')
 const { readFileSync } = require('node:fs')
 const { resolve } = require('node:path')
 
-const expectedErrors = 94
+const expectedErrors = 95
 
 test(`should expose ${expectedErrors} errors`, t => {
   t.plan(1)
@@ -668,6 +668,16 @@ test('FST_ERR_ROUTE_OPTIONS_NOT_OBJ', t => {
   t.assert.strictEqual(error.message, 'Options for "%s:%s" route must be an object')
   t.assert.strictEqual(error.statusCode, 500)
   t.assert.ok(error instanceof TypeError)
+})
+
+test('FST_ERR_ROUTE_PARAMS_NOT_IN_SCHEMA', t => {
+  t.plan(5)
+  const error = new errors.FST_ERR_ROUTE_PARAMS_NOT_IN_SCHEMA()
+  t.assert.strictEqual(error.name, 'FastifyError')
+  t.assert.strictEqual(error.code, 'FST_ERR_ROUTE_PARAMS_NOT_IN_SCHEMA')
+  t.assert.strictEqual(error.message, 'The params schema for "%s:%s" does not declare the path parameter(s): %s')
+  t.assert.strictEqual(error.statusCode, 500)
+  t.assert.ok(error instanceof Error)
 })
 
 test('FST_ERR_ROUTE_DUPLICATED_HANDLER', t => {

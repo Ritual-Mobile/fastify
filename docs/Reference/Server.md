@@ -29,6 +29,7 @@ describes the properties available in that options object.
   - [`trustProxy`](#trustproxy)
   - [`pluginTimeout`](#plugintimeout)
   - [`exposeHeadRoutes`](#exposeheadroutes)
+  - [`checkRouteParams`](#checkrouteparams)
   - [`return503OnClosing`](#return503onclosing)
   - [`ajv`](#ajv)
   - [`serializerOpts`](#serializeropts)
@@ -659,6 +660,31 @@ const fastify = require('fastify')({
 Automatically creates a sibling `HEAD` route for each `GET` route defined. If
 you want a custom `HEAD` handler without disabling this option, make sure to
 define it before the `GET` route.
+
+### `checkRouteParams`
+<a id="checkrouteparams"></a>
+
++ Default: `false`
+
+Checks, as each route is registered, that its params schema declares every
+path parameter in the route URL, and fails startup with
+[`FST_ERR_ROUTE_PARAMS_NOT_IN_SCHEMA`](./Errors.md#fst_err_route_params_not_in_schema)
+when one is missing. For example, `/item/:itemId` with a schema that declares
+only `id` fails, because the schema's rules would never apply to `itemId`.
+
+A schema may declare more parameters than the URL has, so a params schema
+shared across routes passes. Routes that use a custom validator compiler, and
+params schemas whose keys cannot be read directly (`$ref`, `allOf`, `anyOf`,
+`oneOf`, `patternProperties`, or no `properties`), are not checked.
+
+```js
+const fastify = require('fastify')({ checkRouteParams: true })
+
+fastify.get('/item/:itemId', {
+  schema: { params: { type: 'object', properties: { id: { type: 'string' } } } }
+}, handler)
+// ready() rejects: the params schema does not declare itemId
+```
 
 ### `return503OnClosing`
 <a id="factory-return-503-on-closing"></a>

@@ -917,6 +917,7 @@ function processOptions (options, defaultRoute, onBadUrl, onMaxParamLength) {
 
   // exposeHeadRoutes have its default set from the validator
   options.exposeHeadRoutes = initialConfig.exposeHeadRoutes
+  options.checkRouteParams = initialConfig.checkRouteParams
 
   // we need to set this before calling createServer
   options.http2SessionTimeout = initialConfig.http2SessionTimeout

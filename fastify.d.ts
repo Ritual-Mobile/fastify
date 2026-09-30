@@ -136,6 +136,7 @@ declare namespace fastify {
     maxParamLength?: number,
     logController?: LogControllerClass,
     exposeHeadRoutes?: boolean,
+    checkRouteParams?: boolean,
     onProtoPoisoning?: ProtoAction,
     onConstructorPoisoning?: ConstructorAction,
     logger?: boolean | FastifyLoggerOptions<RawServer> & PinoLoggerOptions,

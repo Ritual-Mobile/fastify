@@ -80,6 +80,7 @@
     - [FST_ERR_ASYNC_CONSTRAINT](#fst_err_async_constraint)
     - [FST_ERR_INVALID_URL](#fst_err_invalid_url)
     - [FST_ERR_ROUTE_OPTIONS_NOT_OBJ](#fst_err_route_options_not_obj)
+    - [FST_ERR_ROUTE_PARAMS_NOT_IN_SCHEMA](#fst_err_route_params_not_in_schema)
     - [FST_ERR_ROUTE_DUPLICATED_HANDLER](#fst_err_route_duplicated_handler)
     - [FST_ERR_ROUTE_HANDLER_NOT_FN](#fst_err_route_handler_not_fn)
     - [FST_ERR_ROUTE_MISSING_HANDLER](#fst_err_route_missing_handler)
@@ -433,6 +434,7 @@ Below is a table with all the error codes used by Fastify.
 | <a id="fst_err_async_constraint">FST_ERR_ASYNC_CONSTRAINT</a> | The router received an error when using asynchronous constraints. | - | [#4323](https://github.com/fastify/fastify/pull/4323) |
 | <a id="fst_err_invalid_url">FST_ERR_INVALID_URL</a> | URL must be a string. | Use a string for the URL. | [#3653](https://github.com/fastify/fastify/pull/3653) |
 | <a id="fst_err_route_options_not_obj">FST_ERR_ROUTE_OPTIONS_NOT_OBJ</a> | Options for the route must be an object. | Use an object for the route options. | [#4554](https://github.com/fastify/fastify/pull/4554) |
+| <a id="fst_err_route_params_not_in_schema">FST_ERR_ROUTE_PARAMS_NOT_IN_SCHEMA</a> | With `checkRouteParams` on, the route's params schema does not declare one of its path parameters. | Add the parameter to `schema.params.properties`, or fix the name in the route URL. | - |
 | <a id="fst_err_route_duplicated_handler">FST_ERR_ROUTE_DUPLICATED_HANDLER</a> | Duplicate handler for the route is not allowed. | Use a different handler. | [#4554](https://github.com/fastify/fastify/pull/4554) |
 | <a id="fst_err_route_handler_not_fn">FST_ERR_ROUTE_HANDLER_NOT_FN</a> | Handler for the route must be a function. | Use a function for the handler. | [#4554](https://github.com/fastify/fastify/pull/4554) |
 | <a id="fst_err_route_missing_handler">FST_ERR_ROUTE_MISSING_HANDLER</a> | Missing handler function for the route. | Add a handler function. | [#4554](https://github.com/fastify/fastify/pull/4554) |
